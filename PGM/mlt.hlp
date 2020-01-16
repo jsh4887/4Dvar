@@ -1,0 +1,18 @@
+1 MLT
+This routine calculates the Magnetic Local Time at a point given 
+the Magnetic Longitude and the time in UT.  The calling sequence is:
+
+	T = MLT(yr,ut,mlong,mslong)
+
+where yr is the year (0 - 99) (integer*2
+      ut is the UT time is seconds from the beginning of the year
+	(integer*4).  ut can be determined from the month,day,hr,minut,sec
+	by using the routine CNV$MDHMS_SEC.
+      mlong is the magnetic longitude of the point (real*4).
+      mslong is the magnetic longitude of the sun (real*4)
+	(mslong is RETURNED by MLT in addition to the function value)
+The returned value is the time in hours (real*4).  Note that your program
+must declare MLT to be real*4.
+
+MLT includes corrections for the equation-of-time and the declination
+of the sun.

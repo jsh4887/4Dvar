@@ -1,0 +1,46 @@
+1 CNV$COORD
+  AUTHOR:  K.B.  Baker
+  DIR:     MAG$
+  DATE:    04-26-88
+
+  DESCRIPTION
+     This subroutine  converts  geographic  coordinates  to  geomagnetic
+     coordinates and vice versa.  The calling sequence is:
+
+          CALL CNV$COORD(inlat,inlong,height,order,outlat,outlong,
+      &        outr,mgflag,err)
+
+          where
+
+          inlat, inlong, height are real*4: the input lat., long. and
+                 height (km)
+          order is integer*4 and specifies the order of  the  expansion.
+                 It must be between 1 and 4.  4 is highly recommended.
+          outlat, outlong, outr are real*4:  the lat.  and long. result
+                 of the conversion along with outr which tells you how                  close to  the unit circle (the ideal) the conversion came.
+          mgflag, err are integer*2:  the conversion direction flag:                 1 = geographic to  geomagnetic  and  2  =  geomagnetic                 to  geographic.   err normally is 0.
+2 Files
+  The data file required is:  MAG$:CNV$COORD.DAT
+2 ERROR CODES
+  The error codes are:
+     -2       invalid height.  height must be
+     	      between 0 and 2000 km
+     -4       invalid mgflag.  mgflag must be 1 or 2
+     -8       invalid coordinate. inlat must be
+              between +/- 90  and inlong must be between
+              +/- 360
+     -16      invalid order.  the order of the expansion must
+              be between 1 and 4 (4 is recommended).
+     -32      convergence error in the conversion.
+              outr not on the unit circle.
+2 subroutines
+
+       The following subroutines and libraries are required for linking:
+  ROTATE_POLE, YLM, POLINT, which can be found in mag$:maglib.  2 method
+
+       The conversion  is  done  by  using  an  expansion  in  spherical
+  harmonics.   The  subroutine  YLM  is  used  to evaluate the spherical
+  harmonics.  The coefficients are found in the file MAG$:CNV$COORD.DAT.
+  The  coefficients  were  chosen to give the best fit to the Gustaffson
+  CGM coordinates in  the  Northern  hemisphere  while  giving  accurate
+  conjugate locations for the Southern hemisphere.

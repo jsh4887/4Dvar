@@ -1,0 +1,504 @@
+
+Known Switches:
+-#                  Display each command as it is run
+-###                Display commands that would be executed
+-Bdynamic           Passed to linker; specify dynamic binding
+-Bstatic            Passed to linker; specify static binding
+-C                  Generate code to check array bounds
+-D<macro>           Define a preprocessor macro
+-E                  Stop after preprocessor; print output on standard output
+-F                  Stop after preprocessing, save output in .f file
+-I<incdir>          Add directory to include file search path
+-Kieee[=strict|enable]
+                    Use IEEE division, optionally enable traps
+-Kpic               Generate position independent code
+-Ktrap=align|denorm|divz|fp|inexact|inv|ovf|unf
+                    Determine IEEE Trap conditions
+-L<libdir>          Passed to linker; Add directory to library search path
+-M<arg>             Pass arguments to compiler
+-Mbackslash         Treat backslash like any other character in character strings
+-Mbounds            Generate code to check array bounds
+-Mbuiltin           Use built-in functions
+-Mbyteswapio        Swap byte-order for unformatted input/output
+-Mcache_align       Align long objects on cache-line boundaries
+-Mchkfpstk          Check consistency of floating point stack at subprogram calls
+-Mchkstk            Check for sufficient stack space upon subprogram entry
+-Mcoff              Generate COFF format object
+-Mconcur[=altcode:<n>|altreduction:<n>|assoc|cncall|dist:<format>|levels:<n>|noaltcode|noassoc|nocncall]
+                    Generate parallel loops
+-Mcray=pointer      Set Cray pointer semantics
+-Mdclchk            Check that all variables are declared
+-Mdefaultunit       Treat '*' unit as standard input/output
+-Mdepchk            Check dependence relations for vector or parallel code
+-Mdlines            Compile lines beginning with the letter D
+-Mdollar,<char>     Map dollar sign in identifiers to this character
+-Mdwarf1            Generate DWARF1 debug information with -g
+-Mdwarf2            Generate DWARF2 debug information with -g
+-Melf               Generate ELF format object
+-Mextend            Allow source lines up to 132 characters
+-Mextract=<func>|lib:<extlib>|name:<func>|size:<n>|levels:<n>
+                    Extract subprograms for inlining
+    <func>          Extract function func
+    lib:<extlib>    Store information in directory extlib
+    name:<func>     Extract function func
+    size:<n>        Limit size of extracted functions to n
+    levels:<n>      Create extract library with n levels of inlining
+-Mflushz            Set SSE to flush-to-zero mode
+-Mfptrap            Perform IEEE division, disable floating point traps
+-Mfunc32            Align functions on 32 byte boundaries
+-Mi4                Treat INTEGER as INTEGER*4
+-Minfo[=ili|inline|ipa|loop|opt|stat|sym|time|all]
+                    Generate informational messages
+-Minform=inform|warn|severe|fatal
+                    Set error level of messages to display
+-Minline[=lib:<extlib>|<func>|except:<func>|name:<func>|size:<n>|levels:<n>]
+                    Enable function inlining
+    lib:<extlib>    Use extracted functions from extlib
+    <func>          Inline function func
+    except:<func>   Do not inline function func
+    name:<func>     Inline function func
+    size:<n>        Inline only functions smaller than n
+    levels:<n>      Inline n levels of functions
+    -Minline        Inline all functions that were extracted
+-Miomutex           Generate critical sections around Fortran input/output
+-Mipa[=align|arg|const|collect|fast|globals|inline|levels:<n>|lib:<extlib>|ipofile|localarg|noconst|noerror|ptr|f90ptr|pure|norm|rm|safe|vestigial]
+                    Enable Interprocedural Analysis
+    align           Recognize when targets of pointer dummy are aligned
+    arg             Remove arguments replaced by -Mipa=ptr,const
+    const           Interprocedural constant propagation
+    collect         Collect information only, do not compile
+    fast            Equivalant to -Mipa=const,globals,localarg,ptr,vestigial
+    globals         Optimize references to globals
+    inline          Automatically determine which functions to inline
+    levels:<n>      Inline n levels of functions
+    lib:<extlib>    Name the extract/inline library
+    ipofile         Save IPO information in .ipo files
+    localarg        -Mipa=arg plus externalizes local pointer targets
+    noconst         Disable interprocedural constant propagation
+    noerror         Do not return error condition if IPA information changes
+    ptr             Pointer disambiguation
+    f90ptr          Fortran 90 Pointer disambiguation
+    pure            Pure function detection
+    norm            Do not remove stale object files
+    rm              Remove stale object files
+    safe            Assume unknown function references are safe
+    vestigial       Remove functions that are never called
+    -Mipa           Default enables constant propagation and user bank propagation
+-Mkeepasm           Preserve intermediate assembly language file
+-Mkeepsmart         Keep .sm file generated before Smart assembly rewrite tool
+-Mlastdim           Ignore (1) in last dimension of last common array
+-Mlfs               Link with library directory for large file support
+-Mlist              Generate a listing file
+-Mllalign           Require 8 byte alignment for long long
+-Mlongbranch        Enable long branches
+-Mlre[=assoc|noassoc]
+                    Loop-carried redundancy elimination
+    assoc           Allow expression reassociation
+    noassoc         Disallow expression reassociation
+-Mmpi               Use default MPI libraries
+-Mneginfo[=concur|loop]
+                    Print informative messages when loops are not optimized
+-Mnobackslash       Treat backslash like a C escape character in character strings
+-Mnobuiltin         No built-in functions
+-Mnodclchk          Do not check that all variables are declared
+-Mnodefaultunit     Treat '*' unit as 5 for input and 6 for output
+-Mnodlines          Treat lines beginning with the letter D as comments
+-Mnoflushz          Set SSE to no-flush-to-zero mode
+-Mnoframe           Do not generate code to set up a stack frame
+-Mnofunc32          Don't align functions on 32 byte boundaries
+-Mnoi4              Treat INTEGER as INTEGER*4
+-Mnollalign         Don't require 8 byte alignment for long long
+-Mnomain            Don't include Fortran main program object module
+-Mnontemporal       Allow nontemporal moves and prefetching
+-Mnoopenmp          Ignore OpenMP directives; use with -mp
+-Mnoscalarsse       Don't generate scalar sse code with xmm registers
+-Mnosgimp           Ignore SGI parallelization directives; use with -mp
+-Mnosmart           Don't run Smart assembly rewrite tool after compiler
+-Mnostartup         Do not use standard linker startup file
+-Mnostddef          Do not use standard macro definitions
+-Mnostdinc          Do not use standard include directories
+-Mnostdlib          Do not use standard linker libraries
+-Mnovintr           Do not generate vector intrinsic calls
+-Mnozerotrip        Assume loops always execute; remove zero-trip test
+-Monetrip           Force DO loops to execute at least once
+-Mpf[=file:<file>|<weight>|straighten]
+                    Enable Profiler Feedback
+    file:<file>     Profile file name
+    <weight>        Weight to assign to profile file
+    straighten      Branch straightening
+    -Mpf            Use pgprof.out
+-Mpgicoff           Generate additional symbolic information
+-Mpreprocess        Run preprocessor
+-Mprof[=func|lines|mpi]
+                    Generate additional code for profiling
+    func            Function-level profiling
+    lines           Line-level profiling
+    mpi             Use profiled MPI communication library
+-Mr8                Promote REAL variables and constants to DOUBLE PRECISION
+-Mr8intrinsics      Treat REAL,CMPLX intrinsics as DBLE,DCMPLX
+-Mrecursive         Generate code to allow recursive subprograms
+-Mreentrant         Avoid optimizations that prevent code from being reentrant
+-Mref_externals     Force references to any EXTERNAL subprograms
+-Msafe_lastval      Allow parallelization of loops with conditional scalar assignments
+-Mscalapack         Add Scalapack libraries
+-Mscalarsse         Generate scalar sse code with xmm registers; implies -Mflushz
+-Msecond_underscore Add second underscore to global symbols that already contain an underscore
+-Msignextend        Extend the sign bit when converting shorter to longer integer
+-Msmart[=<n>|opt:<n>|reg:<n>]
+                    Run Smart assembly rewrite tool after compiler
+-Mstabs             Generate stabs info
+-Mstandard          Check standard conformance
+-Mstride0           Generate code to check for zero loop increments
+-Munderscoring      Default: append underscore to external names
+-Munixlogical       Treat REAL,CMPLX intrinsics as DBLE,DCMPLX
+-Munroll[=c:<n>|n:<n>]
+                    Enable loop unrolling
+    c:<n>           Completely unroll loops with loop count n or less
+    n:<n>           Unroll other loops n times
+    -Munroll        Completely unroll loops with loop count 1
+-Mupcase            Treat upper and lower case as distinct; keywords must be in lower case
+-Mvect[=assoc|noassoc|altcode:<n>|noaltcode|cachesize:<c>|levels:<n>|prefetch|recog|norecog|smallvect:<n>|sse|nosse|transform|notransform|idiom|noidiom]
+                    Control automatic vector pipelining
+-Mx,<xflag>         Pass x flag to compiler
+-My,<xflag>         Pass y flag to compiler
+-O[<n>]             Set optimization level, -O0 to -O4, default -O2
+-Qdir <compdir>     Change compiler directory
+-Qpath <comppath>   Change compiler path
+-R<ldarg>           Linker argument
+-S                  Stop before assembling; output in .s file
+-U<macro>           Undefine a preprocessor macro
+-V[<ver>]           Display version messages for compiler
+-W0,<arg>           Pass argument to compiler
+-Wa,<arg>           Pass argument to assembler
+-Wi,<arg>           Pass argument to IPA Linker
+-Wl,<arg>           Pass argument to linker
+-Ws,<arg>           Pass argument to smart
+-Y0,<compdir>       Change compiler directory
+-YC,<complibdir>    Change compiler library directory
+-YI,<incdir>        Change standard include directory
+-YL,<stdlibdir>     Change standard library directory
+-YS,<startupdir>    Change startup object directory
+-YU,<libdir>        Change linker library area
+-Ya,<asdir>         Change assembler directory
+-Yc,<compdir>       Change C++ compiler directory
+-Yh,<compdir>       Change F90/HPF front end directory
+-Yi,<ipadir>        Change IPA tools directory
+-Yl,<linkdir>       Change linker directory
+-byteswapio         Swap byte-order for unformatted input/output
+-c                  Stop after assemble; output in object file
+-dryrun             Display commands that would be executed
+-fast               Common optimizations: -O2 -Munroll=c:1 -Mnoframe -Mlre
+-fastsse             == -fast -Mvect=sse -Mscalarsse -Mcache_align -Mflushz
+-flags              Show compiler switches; same as -help
+-g                  Generate information for debugger
+-g77libs            Include g77 library when linking
+-help               Show compiler switches
+-i2                 Treat INTEGER as INTEGER*2
+-i4                 Treat INTEGER as INTEGER*4
+-i8                 Treat INTEGER as INTEGER*8
+-i8storage          INTEGER and LOGICAL occupy 8 bytes
+-l<lib>             Passed to linker; Add library name to library search list
+-m                  Passed to linker; display link map
+-mcmodel=small|medium
+                    Set the memory model
+    small           Small model, total memory size < 2GB
+    medium          Medium model, total memory size > 2GB, object size < 2GB
+-mp                 Enable OpenMP
+-o<outputfile>      Name the output file
+-pc=32|64|80
+-ql                 Enable line-level profiling -- same as -Mprof=lines
+-qp                 Enable procedure-level profiling -- same as -Mprof=func
+-r                  Generate relocatable object; passed to linker
+-r4                 Treat REAL as REAL*4
+-r8                 Treat REAL as REAL*8
+-s                  Passed to linker; strip symbol table from exectable
+-shared             Used to produce shared libraries
+-show               Show compiler configuration
+-silent             Inhibit warning messages; same as -Minform=severe
+-time               Print execution time for each compiler step
+-tp=k8-32|k8-64|k7|p5|p6|piii|piv|p7|px
+                    Choose target processor type
+    k8-32           AMD K8 Processor 32-bit mode
+    k8-64           AMD K8 Processor 64-bit mode
+    k7              AMD Athlon Processor
+    p5              Intel Pentium
+    p6              Intel P6 Pentium (Pentium Pro, II, III)
+    piii            Intel Pentium III
+    piv             Intel Pentium IV
+    p7              Intel P7 Pentium IV
+    px              Intel generic Pentium
+-tpp5               Choose Pentium target processor
+-tpp6               Choose Pentium Pro, II, III target processor
+-tpp7               Choose Pentium IV target processor
+-u<undef>           Passed to linker; generate undefined reference
+-v                  Display each command as it is run
+-w                  Inhibit warning messages; same as -Minform=severe
+
+Known Suffixes:
+.F .fpp             Fortran source: preprocess, compile, assemble, link
+.F90                Fortran 90 source: preprocess, compile, assemble, link
+.HPF                HPF source: preprocess, compile, assemble, link
+.a .so              Object library: link
+.s                  Assembler source: assemble, link
+.c                  C source: preprocess, compile, assemble, link
+.C .cpp .cc .cxx .c++
+                    C++ source: preprocess, compile, assemble, link
+.f .for             Fortran source: compile, assemble, link
+.f90                Fortran 90 source: compile, assemble, link
+.hpf                High Performance Fortran source: compile, assemble, link
+.i                  Preprocessed C source: compile, assemble, link
+.ipo                IPA object file: IPA link
+.o                  Object file: link
+other               Other files: passed to linker
+
+Known Switches:
+-#                  Display each command as it is run
+-###                Display commands that would be executed
+-Bdynamic           Passed to linker; specify dynamic binding
+-Bstatic            Passed to linker; specify static binding
+-C                  Generate code to check array bounds
+-D<macro>           Define a preprocessor macro
+-E                  Stop after preprocessor; print output on standard output
+-F                  Stop after preprocessing, save output in .f file
+-I<incdir>          Add directory to include file search path
+-Kieee[=strict|enable]
+                    Use IEEE division, optionally enable traps
+-Kpic               Generate position independent code
+-Ktrap=align|denorm|divz|fp|inexact|inv|ovf|unf
+                    Determine IEEE Trap conditions
+-L<libdir>          Passed to linker; Add directory to library search path
+-M<arg>             Pass arguments to compiler
+-Mbackslash         Treat backslash like any other character in character strings
+-Mbounds            Generate code to check array bounds
+-Mbuiltin           Use built-in functions
+-Mbyteswapio        Swap byte-order for unformatted input/output
+-Mcache_align       Align long objects on cache-line boundaries
+-Mchkfpstk          Check consistency of floating point stack at subprogram calls
+-Mchkstk            Check for sufficient stack space upon subprogram entry
+-Mcoff              Generate COFF format object
+-Mconcur[=altcode:<n>|altreduction:<n>|assoc|cncall|dist:<format>|levels:<n>|noaltcode|noassoc|nocncall]
+                    Generate parallel loops
+-Mcray=pointer      Set Cray pointer semantics
+-Mdclchk            Check that all variables are declared
+-Mdefaultunit       Treat '*' unit as standard input/output
+-Mdepchk            Check dependence relations for vector or parallel code
+-Mdlines            Compile lines beginning with the letter D
+-Mdollar,<char>     Map dollar sign in identifiers to this character
+-Mdwarf1            Generate DWARF1 debug information with -g
+-Mdwarf2            Generate DWARF2 debug information with -g
+-Melf               Generate ELF format object
+-Mextend            Allow source lines up to 132 characters
+-Mextract=<func>|lib:<extlib>|name:<func>|size:<n>|levels:<n>
+                    Extract subprograms for inlining
+    <func>          Extract function func
+    lib:<extlib>    Store information in directory extlib
+    name:<func>     Extract function func
+    size:<n>        Limit size of extracted functions to n
+    levels:<n>      Create extract library with n levels of inlining
+-Mflushz            Set SSE to flush-to-zero mode
+-Mfptrap            Perform IEEE division, disable floating point traps
+-Mfunc32            Align functions on 32 byte boundaries
+-Mi4                Treat INTEGER as INTEGER*4
+-Minfo[=ili|inline|ipa|loop|opt|stat|sym|time|all]
+                    Generate informational messages
+-Minform=inform|warn|severe|fatal
+                    Set error level of messages to display
+-Minline[=lib:<extlib>|<func>|except:<func>|name:<func>|size:<n>|levels:<n>]
+                    Enable function inlining
+    lib:<extlib>    Use extracted functions from extlib
+    <func>          Inline function func
+    except:<func>   Do not inline function func
+    name:<func>     Inline function func
+    size:<n>        Inline only functions smaller than n
+    levels:<n>      Inline n levels of functions
+    -Minline        Inline all functions that were extracted
+-Miomutex           Generate critical sections around Fortran input/output
+-Mipa[=align|arg|const|collect|fast|globals|inline|levels:<n>|lib:<extlib>|ipofile|localarg|noconst|noerror|ptr|f90ptr|pure|norm|rm|safe|vestigial]
+                    Enable Interprocedural Analysis
+    align           Recognize when targets of pointer dummy are aligned
+    arg             Remove arguments replaced by -Mipa=ptr,const
+    const           Interprocedural constant propagation
+    collect         Collect information only, do not compile
+    fast            Equivalant to -Mipa=const,globals,localarg,ptr,vestigial
+    globals         Optimize references to globals
+    inline          Automatically determine which functions to inline
+    levels:<n>      Inline n levels of functions
+    lib:<extlib>    Name the extract/inline library
+    ipofile         Save IPO information in .ipo files
+    localarg        -Mipa=arg plus externalizes local pointer targets
+    noconst         Disable interprocedural constant propagation
+    noerror         Do not return error condition if IPA information changes
+    ptr             Pointer disambiguation
+    f90ptr          Fortran 90 Pointer disambiguation
+    pure            Pure function detection
+    norm            Do not remove stale object files
+    rm              Remove stale object files
+    safe            Assume unknown function references are safe
+    vestigial       Remove functions that are never called
+    -Mipa           Default enables constant propagation and user bank propagation
+-Mkeepasm           Preserve intermediate assembly language file
+-Mkeepsmart         Keep .sm file generated before Smart assembly rewrite tool
+-Mlastdim           Ignore (1) in last dimension of last common array
+-Mlfs               Link with library directory for large file support
+-Mlist              Generate a listing file
+-Mllalign           Require 8 byte alignment for long long
+-Mlongbranch        Enable long branches
+-Mlre[=assoc|noassoc]
+                    Loop-carried redundancy elimination
+    assoc           Allow expression reassociation
+    noassoc         Disallow expression reassociation
+-Mmpi               Use default MPI libraries
+-Mneginfo[=concur|loop]
+                    Print informative messages when loops are not optimized
+-Mnobackslash       Treat backslash like a C escape character in character strings
+-Mnobuiltin         No built-in functions
+-Mnodclchk          Do not check that all variables are declared
+-Mnodefaultunit     Treat '*' unit as 5 for input and 6 for output
+-Mnodlines          Treat lines beginning with the letter D as comments
+-Mnoflushz          Set SSE to no-flush-to-zero mode
+-Mnoframe           Do not generate code to set up a stack frame
+-Mnofunc32          Don't align functions on 32 byte boundaries
+-Mnoi4              Treat INTEGER as INTEGER*4
+-Mnollalign         Don't require 8 byte alignment for long long
+-Mnomain            Don't include Fortran main program object module
+-Mnontemporal       Allow nontemporal moves and prefetching
+-Mnoopenmp          Ignore OpenMP directives; use with -mp
+-Mnoscalarsse       Don't generate scalar sse code with xmm registers
+-Mnosgimp           Ignore SGI parallelization directives; use with -mp
+-Mnosmart           Don't run Smart assembly rewrite tool after compiler
+-Mnostartup         Do not use standard linker startup file
+-Mnostddef          Do not use standard macro definitions
+-Mnostdinc          Do not use standard include directories
+-Mnostdlib          Do not use standard linker libraries
+-Mnovintr           Do not generate vector intrinsic calls
+-Mnozerotrip        Assume loops always execute; remove zero-trip test
+-Monetrip           Force DO loops to execute at least once
+-Mpf[=file:<file>|<weight>|straighten]
+                    Enable Profiler Feedback
+    file:<file>     Profile file name
+    <weight>        Weight to assign to profile file
+    straighten      Branch straightening
+    -Mpf            Use pgprof.out
+-Mpgicoff           Generate additional symbolic information
+-Mpreprocess        Run preprocessor
+-Mprof[=func|lines|mpi]
+                    Generate additional code for profiling
+    func            Function-level profiling
+    lines           Line-level profiling
+    mpi             Use profiled MPI communication library
+-Mr8                Promote REAL variables and constants to DOUBLE PRECISION
+-Mr8intrinsics      Treat REAL,CMPLX intrinsics as DBLE,DCMPLX
+-Mrecursive         Generate code to allow recursive subprograms
+-Mreentrant         Avoid optimizations that prevent code from being reentrant
+-Mref_externals     Force references to any EXTERNAL subprograms
+-Msafe_lastval      Allow parallelization of loops with conditional scalar assignments
+-Mscalapack         Add Scalapack libraries
+-Mscalarsse         Generate scalar sse code with xmm registers; implies -Mflushz
+-Msecond_underscore Add second underscore to global symbols that already contain an underscore
+-Msignextend        Extend the sign bit when converting shorter to longer integer
+-Msmart[=<n>|opt:<n>|reg:<n>]
+                    Run Smart assembly rewrite tool after compiler
+-Mstabs             Generate stabs info
+-Mstandard          Check standard conformance
+-Mstride0           Generate code to check for zero loop increments
+-Munderscoring      Default: append underscore to external names
+-Munixlogical       Treat REAL,CMPLX intrinsics as DBLE,DCMPLX
+-Munroll[=c:<n>|n:<n>]
+                    Enable loop unrolling
+    c:<n>           Completely unroll loops with loop count n or less
+    n:<n>           Unroll other loops n times
+    -Munroll        Completely unroll loops with loop count 1
+-Mupcase            Treat upper and lower case as distinct; keywords must be in lower case
+-Mvect[=assoc|noassoc|altcode:<n>|noaltcode|cachesize:<c>|levels:<n>|prefetch|recog|norecog|smallvect:<n>|sse|nosse|transform|notransform|idiom|noidiom]
+                    Control automatic vector pipelining
+-Mx,<xflag>         Pass x flag to compiler
+-My,<xflag>         Pass y flag to compiler
+-O[<n>]             Set optimization level, -O0 to -O4, default -O2
+-Qdir <compdir>     Change compiler directory
+-Qpath <comppath>   Change compiler path
+-R<ldarg>           Linker argument
+-S                  Stop before assembling; output in .s file
+-U<macro>           Undefine a preprocessor macro
+-V[<ver>]           Display version messages for compiler
+-W0,<arg>           Pass argument to compiler
+-Wa,<arg>           Pass argument to assembler
+-Wi,<arg>           Pass argument to IPA Linker
+-Wl,<arg>           Pass argument to linker
+-Ws,<arg>           Pass argument to smart
+-Y0,<compdir>       Change compiler directory
+-YC,<complibdir>    Change compiler library directory
+-YI,<incdir>        Change standard include directory
+-YL,<stdlibdir>     Change standard library directory
+-YS,<startupdir>    Change startup object directory
+-YU,<libdir>        Change linker library area
+-Ya,<asdir>         Change assembler directory
+-Yc,<compdir>       Change C++ compiler directory
+-Yh,<compdir>       Change F90/HPF front end directory
+-Yi,<ipadir>        Change IPA tools directory
+-Yl,<linkdir>       Change linker directory
+-byteswapio         Swap byte-order for unformatted input/output
+-c                  Stop after assemble; output in object file
+-dryrun             Display commands that would be executed
+-fast               Common optimizations: -O2 -Munroll=c:1 -Mnoframe -Mlre
+-fastsse             == -fast -Mvect=sse -Mscalarsse -Mcache_align -Mflushz
+-flags              Show compiler switches; same as -help
+-g                  Generate information for debugger
+-g77libs            Include g77 library when linking
+-help               Show compiler switches
+-i2                 Treat INTEGER as INTEGER*2
+-i4                 Treat INTEGER as INTEGER*4
+-i8                 Treat INTEGER as INTEGER*8
+-i8storage          INTEGER and LOGICAL occupy 8 bytes
+-l<lib>             Passed to linker; Add library name to library search list
+-m                  Passed to linker; display link map
+-mcmodel=small|medium
+                    Set the memory model
+    small           Small model, total memory size < 2GB
+    medium          Medium model, total memory size > 2GB, object size < 2GB
+-mp                 Enable OpenMP
+-o<outputfile>      Name the output file
+-pc=32|64|80
+-ql                 Enable line-level profiling -- same as -Mprof=lines
+-qp                 Enable procedure-level profiling -- same as -Mprof=func
+-r                  Generate relocatable object; passed to linker
+-r4                 Treat REAL as REAL*4
+-r8                 Treat REAL as REAL*8
+-s                  Passed to linker; strip symbol table from exectable
+-shared             Used to produce shared libraries
+-show               Show compiler configuration
+-silent             Inhibit warning messages; same as -Minform=severe
+-time               Print execution time for each compiler step
+-tp=k8-32|k8-64|k7|p5|p6|piii|piv|p7|px
+                    Choose target processor type
+    k8-32           AMD K8 Processor 32-bit mode
+    k8-64           AMD K8 Processor 64-bit mode
+    k7              AMD Athlon Processor
+    p5              Intel Pentium
+    p6              Intel P6 Pentium (Pentium Pro, II, III)
+    piii            Intel Pentium III
+    piv             Intel Pentium IV
+    p7              Intel P7 Pentium IV
+    px              Intel generic Pentium
+-tpp5               Choose Pentium target processor
+-tpp6               Choose Pentium Pro, II, III target processor
+-tpp7               Choose Pentium IV target processor
+-u<undef>           Passed to linker; generate undefined reference
+-v                  Display each command as it is run
+-w                  Inhibit warning messages; same as -Minform=severe
+
+Known Suffixes:
+.F .fpp             Fortran source: preprocess, compile, assemble, link
+.F90                Fortran 90 source: preprocess, compile, assemble, link
+.HPF                HPF source: preprocess, compile, assemble, link
+.a .so              Object library: link
+.s                  Assembler source: assemble, link
+.c                  C source: preprocess, compile, assemble, link
+.C .cpp .cc .cxx .c++
+                    C++ source: preprocess, compile, assemble, link
+.f .for             Fortran source: compile, assemble, link
+.f90                Fortran 90 source: compile, assemble, link
+.hpf                High Performance Fortran source: compile, assemble, link
+.i                  Preprocessed C source: compile, assemble, link
+.ipo                IPA object file: IPA link
+.o                  Object file: link
+other               Other files: passed to linker

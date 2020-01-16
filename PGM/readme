@@ -1,0 +1,85 @@
+********* Altitude Adjusted Corrected Geomagnetic Coordinates (AACGM) *******
+	The AACGM coordinate system is a synthesis of the 1990 Epoch Corrected
+Geomagnetic Coordinate system and the PACE geomagnetic coordinate system. 
+	
+	A detailed discussion of the classical Corrected Geomagnetic Coordinate
+system for 1990 will be found in the paper "A revised corrected geomagnetic 
+coordinate system for Epochs 1985 and 1990" by G. Gustafsson, N.E.
+Papitashvili, and V.O. Papitashvili, J. Atmos. Terr. Phys., vol. 54,
+pp. 1609-1631, 1992.
+	A program for calculating classical CGM coordinates is available
+from the National Space Science Data Center.  Contact Natasha Papitashvili at
+"natasha@nssdca.gsfc.nasa.gov" for further information.
+ 
+	The original PACE geomagnetic coordinate system is described in a paper
+published in J. Geophys. Res., Vol 94, pp 9139-9143, July, 1989, 
+"A new magnetic coordinate studies at high latitudes"
+ by K.B. Baker and S. Wing.
+
+*****************************************************************************
+			AACGM Geomagnetic Coordinates
+
+This is a short description of the software needed to implement the AACGM
+Geomagnetic coordinate system, including the definition of magnetic local
+time.
+
+COORDCNV:
+
+	This is a program which allows you to type in a geographic or
+geomagnetic location and converts the location to geomagnetic or geographic.
+It also demonstrates the proper use of the subroutines which do the 
+conversion.  These subroutines are described below.
+
+AACGM coordinates:
+
+
+	Conversion to the AACGM from geographic or to geographic from AACGM
+is accomplished by a subroutine named SFC$$convert_geo_coord.  This subroutine
+ calls several other subroutines.  For users of the older PACE coordinate
+system, a wrapper routine called "cnv$coord" is also available.  The wrapper
+will make the correct call to the SFC$$convert_geo_coord routine.  
+	The original PACE system used a data file to store the coefficients
+that defined the coordinate transformation.  In the new version, all the
+coefficients are in DATA statements in the fortran subroutine and no data file
+is required. 
+
+A help file is also available which defines the calling sequence and returned
+values for the subroutine.  This file, CNV$COORD.HLP can be placed in a VAX
+VMS help library if you wish to have this information available on-line.
+
+	The routines you will need are: CNVCOORD, SFC_CONVERT_GEO_COORD,
+RYLM and CG_ALT_DIP. There is also a MAKEFILE for UNIX systems. If
+you copy all the files in this directory to your own computer you should have
+everything you need to implement the PGM coordinate system.
+
+MAGNETIC LOCAL TIME
+
+	The primary routine needed to determine magnetic local time is
+the real*4 function MLT.  This actually consists of several subroutines and
+functions.  A help file, MLT.HLP is provided which gives the calling sequence
+for MLT.  The source file MLT.FOR includes all the subroutines and functions
+that you need in addition to the CNV$COORD routines.  
+
+	Note that the time you give the MLT function is given as a year
+and a number of seconds in the year.  You can either compute the number of
+seconds (an integer*4 number) yourself or you can use the routine
+CNV_MDHMS_SEC.  The source code for CNV_MDHMS_SEC can be found in the
+directory SuperDARN/export/gen. This routine converts the Month,Day,Hour,
+Minute and Second to Seconds in the year.  Its inverse is CNV$SEC_MDHMS.
+
+
+Help Files:
+
+	There are several help files included in the directory.  These
+help files can be typed out to give you the information about calling
+sequences, error conditions, etc.  You can also insert these files into
+a VAX/VMS help library if you wish to have this information available
+on-line (I find it quite useful).  The help files are:
+
+	CNV$COORD.HLP, MLT.HLP, CNV$MDHMS_SEC.HLP, CNV$SEC_MDHMS
+
+
+If you have any questions or problems with these routines, please contact
+Kile_Baker@jhuapl.edu
+
+

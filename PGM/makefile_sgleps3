@@ -1,0 +1,80 @@
+#	This make file works on an HP_UX unix system.
+#	It will have to be modified to work on other
+#	systems.
+#
+#	This is the make file for the 1995 epoch PACE Magnetic Coordinates
+#
+#
+#	If you want to use the MLT routines, you will also need the
+#	routine for converting yr, month, day, hour, minute, sec
+#	to yr_sec.  This routine is called cnv$mdhms_sec.
+#
+#	The routine sfctest was provided by PHillips Lab. and creates
+#	a table of magnetic coordinates.
+#
+#	The routine coordcnv is a little driver that asks the user to
+#	input a latitude and longitude and will then return the converted
+#	coordinates.  
+#
+#	NOTE:  in order to use the 1990 version of the coordinate
+#	system you must have the two data files, aacgm_coeffs1990.asc
+#	and aacgm_coeffs1995.asc.
+#
+# define the directory for header and include files
+#
+INC_DIR = /project/radar/include
+#
+# define the default flags for compilation
+# C must specify position independent code (+z) and allow 
+#    dollar signs in names (the fortran convert subroutine
+#    is sfc$$convert_geo_coord.
+#
+# Fortran must specify VAX/VMS extensions (+e) 
+#    extended source lines (+es) and position independent code (+z)
+#
+CFLAGS = -c  +z -D_HPUX_SOURCE -I$(INC_DIR) +e 
+#FFLAGS = -c  +es +e +z -C -I$(INC_DIR) 
+FFLAGS = -c -Mextend -Kpic -C -I$(INC_DIR) -qfree=F90 -g -C -I. -I/usr/local/include
+
+#CC = /bin/c89
+CC = xlc
+#FC = f77
+FC = xlf90
+
+AR = ar rc
+RANLIB = ranlib
+AR2 = $(RANLIB)
+
+#
+# DEFINE the default blockdata routine to be used
+# this is normally whatever is the most recent magnetic field model
+#
+DEFAULT_MODEL = blkdat95.f
+#
+PGM_OBJS = cnvcoord.o sfc_convert_geo_coord.o rylm.o cgm_to_altitude.o  altitude_to_cgm.o sfc_put_user_msg.o aacgm_init.o blkdat95.f #$DEFAULT_MODEL
+
+MLT_OBJS = mlt.o mlt1.o eqn_of_time.o solar_loc.o
+
+.f.o:
+	$(FC) $(FFLAGS) -o $@ $<
+
+.c.o:	
+	$(CC) $(CFLAGS) -o $@ $<
+
+ALL: sfctest coordcnv coordcnv90 libpgm.a #libpgm.sl
+
+sfctest:	sfctest.o $(PGM_OBJS)
+	$(FC) -g -o sfctest sfctest.o $(PGM_OBJS) -lm
+
+coordcnv90:	coordcnv90.o $(PGM_OBJS)
+	$(FC) -g -o coordcnv90 coordcnv90.o -lpgm -lm
+
+coordcnv:	coordcnv.o $(PGM_OBJS) 
+	$(FC) -g -o coordcnv coordcnv.o -L./ -lpgm -lm #-lpgm -lm
+
+libpgm.a:	$(PGM_OBJS) $(MLT_OBJS)
+	$(AR) $@ $(PGM_OBJS) $(MLT_OBJS)
+	$(AR2) $@ libpgm.a
+
+#libpgm.sl:	$(PGM_OBJS) $(MLT_OBJS)
+#	ld -b -o libpgm.sl $(PGM_OBJS) $(MLT_OBJS)
